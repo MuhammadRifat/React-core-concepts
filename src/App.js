@@ -2,15 +2,26 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  let roll = [1,2,3,4,5,6,7,8];
   const personName = [
+    {name:'Rifat', job:'Software Engineer'},
+    {name:'Romjan', job:'Executive Magistrate'},
+    {name:'Rifat', job:'Software Engineer'},
+    {name:'Romjan', job:'Executive Magistrate'},
     {name:'Rifat', job:'Software Engineer'},
     {name:'Romjan', job:'Executive Magistrate'}
   ];
   return (
     <div className="App">
       <header className="App-header">
-        <Person person={personName[0]}></Person>
-        <Person person={personName[1]}></Person>
+        <ul>
+          {
+            roll.map(r => <li>{r}</li>)
+          }
+        </ul>
+        {
+          personName.map(person => <Person person={person}></Person>)
+        }
       </header>
     </div>
   );
