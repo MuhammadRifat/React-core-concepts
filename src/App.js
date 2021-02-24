@@ -39,9 +39,14 @@ function Person(props){
 }
 
 function Counter(){
-  const [count, setCounter] = useState(10);
+  const [count, setCounter] = useState(0);
+  const increaseHandler = () => setCounter(count + 1);
   return (
+    <div>
     <h1>Count: {count}</h1>
+    <button onClick={increaseHandler}>+</button>
+    <button onClick={() => setCounter(count - 1)}>-</button>
+    </div>
   );
 }
 
