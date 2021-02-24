@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   let roll = [1,2,3,4,5,6,7,8];
@@ -21,6 +21,7 @@ function App() {
             roll.map(r => <li>{r}</li>)
           }
         </ul>
+        <Users></Users>
         {
           personName.map(person => <Person person={person}></Person>)
         }
@@ -48,6 +49,25 @@ function Counter(){
     <button onClick={() => setCounter(count - 1)}>-</button>
     </div>
   );
+}
+
+function Users(){
+  const [persons, setUsers] = useState([]);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => setUsers(data));
+  }, [])
+  return(
+    <div>
+      <h2>Number of Users: {persons.length}</h2>
+      <ul>
+        {
+          persons.map(user => <li>{user.name}: {user.email}</li>)
+        }
+      </ul>
+    </div>
+  )
 }
 
 export default App;
